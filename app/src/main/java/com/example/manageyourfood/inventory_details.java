@@ -7,28 +7,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.ArrayList;
+public class inventory_details extends AppCompatActivity {
 
-public class Inventory extends AppCompatActivity {
     private Button invNavButton;
     private Button grocListNavButton;
     private Button mealSuggestNavButton;
     private Button homeNavButton;
-    private Button addInvButton;
-    private Button deleteInvButton;
-    public ArrayList invArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inventory);
+        setContentView(R.layout.activity_inventory_details);
 
         invNavButton = findViewById(R.id.InvNav);
         grocListNavButton = findViewById(R.id.GroceryListNav);
         mealSuggestNavButton = findViewById(R.id.mealSuggestNav);
         homeNavButton = findViewById(R.id.homeNav);
-        addInvButton = findViewById(R.id.addInvButton);
-        deleteInvButton = findViewById(R.id.deleteInvButton);
 
         invNavButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,20 +48,15 @@ public class Inventory extends AppCompatActivity {
                 navHome();
             }
         });
-        addInvButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navNewInv();
-            }
-        });
 
     }
+
     public void navHome(){
         Intent homeIntent = new Intent(this, MainActivity.class);
         startActivity(homeIntent);
     }
 
-    public void navInv (){
+    public void navInv () {
         Intent InvIntent = new Intent(this, Inventory.class);
         startActivity(InvIntent);
     }
@@ -82,8 +71,4 @@ public class Inventory extends AppCompatActivity {
         startActivity(MealSuggestIntent);
     }
 
-    public void navNewInv (){
-        Intent newInvIntent = new Intent(this, InventoryAdd.class);
-        startActivity(newInvIntent);
-    }
 }

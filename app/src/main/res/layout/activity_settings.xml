@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Inventory">
+    tools:context=".Settings">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottomNavigationView"
@@ -64,72 +64,22 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/contentLayout"
-        android:layout_width="395dp"
+        android:layout_width="391dp"
         android:layout_height="576dp"
-        android:background="@android:color/holo_blue_light"
-        android:visibility="visible"
+        android:background="@android:color/holo_red_light"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="120dp">
-
-        <Button
-            android:id="@+id/addInvButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginLeft="28dp"
-            android:layout_marginTop="64dp"
-            android:text="Add New Inventory"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/invItem2" />
-
-        <ImageButton
-            android:id="@+id/invItem2"
-            android:layout_width="332dp"
-            android:layout_height="67dp"
-            android:layout_marginTop="40dp"
-            android:background="@color/colorPrimary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.444"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/invItem1"
-            app:srcCompat="@drawable/cupboard" />
-
-        <ImageButton
-            android:id="@+id/invItem1"
-            android:layout_width="332dp"
-            android:layout_height="63dp"
-            android:layout_marginTop="40dp"
-            android:background="@color/design_default_color_primary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.492"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inventoryTitle"
-            app:srcCompat="@drawable/fridge" />
-
-        <Button
-            android:id="@+id/deleteInvButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
-            android:text="Delete Inventory"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.644"
-            app:layout_constraintStart_toEndOf="@+id/addInvButton"
-            app:layout_constraintTop_toBottomOf="@+id/invItem2" />
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/inventoryTitle"
+            android:id="@+id/settingsTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/invTitle"
+            android:layout_marginTop="32dp"
+            android:text="Settings"
             android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,9 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".itemDetails"></activity>
-        <activity android:name=".itemEdit" />
-        <activity android:name=".Inventory" />
+        <activity android:name=".Settings"></activity>
+        <activity android:name=".inventory_details" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,6 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".InventoryEdit" />
+        <activity android:name=".GrocListEdit" />
+        <activity android:name=".GrocListDetails" />
+        <activity android:name=".GrocListAdd" />
+        <activity android:name=".GrocList" />
+        <activity android:name=".MealSuggest" />
+        <activity android:name=".InventoryAdd" />
+        <activity android:name=".itemDetails" />
+        <activity android:name=".itemEdit" />
+        <activity android:name=".Inventory" />
     </application>
 
 </manifest>

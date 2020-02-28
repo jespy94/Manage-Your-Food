@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Manage Your Food</string>
+    <string name="title_activity_inventory_add">InventoryAdd</string>
+    <string name="title_activity_inventory_edit">InventoryEdit</string>
+    <string name="inventoryNavTitle">Inventory</string>
+    <string name="mealSuggestNavTitle">Meal Suggestions</string>
+    <string name="groceryListNavTitle">Grocery List</string>
+    <string name="title_activity_meal_suggest">MealSuggest</string>
+    <string name="homeNav">Home</string>
+    <string name="homeTitle">Home</string>
+    <string name="grocListTitle">Grocery Lists</string>
+    <string name="invTitle">Inventory Main</string>
+    <string name="mealSuggestTitle">Meal Suggestions</string>
 </resources>

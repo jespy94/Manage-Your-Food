@@ -7,28 +7,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.ArrayList;
-
-public class Inventory extends AppCompatActivity {
+public class GrocListDetails extends AppCompatActivity {
     private Button invNavButton;
     private Button grocListNavButton;
     private Button mealSuggestNavButton;
     private Button homeNavButton;
-    private Button addInvButton;
-    private Button deleteInvButton;
-    public ArrayList invArray;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inventory);
+        setContentView(R.layout.activity_groc_list_details);
 
         invNavButton = findViewById(R.id.InvNav);
         grocListNavButton = findViewById(R.id.GroceryListNav);
         mealSuggestNavButton = findViewById(R.id.mealSuggestNav);
         homeNavButton = findViewById(R.id.homeNav);
-        addInvButton = findViewById(R.id.addInvButton);
-        deleteInvButton = findViewById(R.id.deleteInvButton);
 
         invNavButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,13 +46,6 @@ public class Inventory extends AppCompatActivity {
                 navHome();
             }
         });
-        addInvButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navNewInv();
-            }
-        });
-
     }
     public void navHome(){
         Intent homeIntent = new Intent(this, MainActivity.class);
@@ -80,10 +65,5 @@ public class Inventory extends AppCompatActivity {
     public void navMealSuggest () {
         Intent MealSuggestIntent = new Intent(this, MealSuggest.class);
         startActivity(MealSuggestIntent);
-    }
-
-    public void navNewInv (){
-        Intent newInvIntent = new Intent(this, InventoryAdd.class);
-        startActivity(newInvIntent);
     }
 }

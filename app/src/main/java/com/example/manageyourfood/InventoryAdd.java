@@ -6,29 +6,29 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 
-public class Inventory extends AppCompatActivity {
+public class InventoryAdd extends AppCompatActivity {
     private Button invNavButton;
     private Button grocListNavButton;
     private Button mealSuggestNavButton;
     private Button homeNavButton;
-    private Button addInvButton;
-    private Button deleteInvButton;
-    public ArrayList invArray;
+    private Button addNewInvButton;
+    public int inventoryCounter;
+    private EditText newInvName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inventory);
+        setContentView(R.layout.activity_inventory_add);
 
         invNavButton = findViewById(R.id.InvNav);
         grocListNavButton = findViewById(R.id.GroceryListNav);
         mealSuggestNavButton = findViewById(R.id.mealSuggestNav);
         homeNavButton = findViewById(R.id.homeNav);
-        addInvButton = findViewById(R.id.addInvButton);
-        deleteInvButton = findViewById(R.id.deleteInvButton);
+        addNewInvButton = findViewById(R.id.addNewInvButton);
 
         invNavButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,13 +54,12 @@ public class Inventory extends AppCompatActivity {
                 navHome();
             }
         });
-        addInvButton.setOnClickListener(new View.OnClickListener() {
+        addNewInvButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navNewInv();
+                addInventory();
             }
         });
-
     }
     public void navHome(){
         Intent homeIntent = new Intent(this, MainActivity.class);
@@ -81,9 +80,12 @@ public class Inventory extends AppCompatActivity {
         Intent MealSuggestIntent = new Intent(this, MealSuggest.class);
         startActivity(MealSuggestIntent);
     }
+    public void addInventory(){
 
-    public void navNewInv (){
-        Intent newInvIntent = new Intent(this, InventoryAdd.class);
-        startActivity(newInvIntent);
+       // inventoryItem inventory1 = new inventoryItem();
+       // inventory1.setInvName(newInvName.findViewsWithText(R.id.newInvText));
+        //Intent newInvDetailsIntent = new Intent(this, inventory_details);
+        Intent invDetailIntent = new Intent(this, inventory_details.class);
+        startActivity(invDetailIntent);
     }
 }
