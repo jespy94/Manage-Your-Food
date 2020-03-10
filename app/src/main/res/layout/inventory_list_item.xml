@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="4dp"
+    app:cardBackgroundColor="@color/cardview_dark_background"
+    android:paddingBottom="4dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp">
+
+        <TextView
+            android:id="@+id/invItemName"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="117dp"
+            android:layout_marginRight="117dp"
+            android:text="Test-Test"
+            android:textAlignment="center"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/invItemPic"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="98dp"
+            android:layout_marginLeft="98dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="47dp"
+            android:layout_marginRight="47dp"
+            android:layout_toStartOf="@+id/invItemName"
+            android:layout_toLeftOf="@+id/invItemName"
+            app:srcCompat="@android:color/holo_red_dark" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+

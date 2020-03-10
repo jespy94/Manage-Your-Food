@@ -21,10 +21,10 @@
         <activity android:name=".InventoryEdit" />
         <activity android:name=".GrocListEdit" />
         <activity android:name=".GrocListDetails" />
-        <activity android:name=".GrocListAdd" />
         <activity android:name=".GrocList" />
         <activity android:name=".MealSuggest" />
-        <activity android:name=".InventoryAdd" />
+        <activity android:name=".InventoryAdd"
+            android:parentActivityName=".Inventory"/>
         <activity android:name=".itemDetails" />
         <activity android:name=".itemEdit" />
         <activity android:name=".Inventory" />

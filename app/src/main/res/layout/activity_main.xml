@@ -92,7 +92,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/homeTitle"
-            app:srcCompat="@drawable/myflogo" />
+            app:srcCompat="@android:drawable/alert_dark_frame" />
 
         <Button
             android:id="@+id/settingNavButton"

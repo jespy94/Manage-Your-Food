@@ -17,6 +17,8 @@ public class GrocListDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_groc_list_details);
 
+        buildGrocListDetailsRecyclerView();
+
         invNavButton = findViewById(R.id.InvNav);
         grocListNavButton = findViewById(R.id.GroceryListNav);
         mealSuggestNavButton = findViewById(R.id.mealSuggestNav);
@@ -65,5 +67,8 @@ public class GrocListDetails extends AppCompatActivity {
     public void navMealSuggest () {
         Intent MealSuggestIntent = new Intent(this, MealSuggest.class);
         startActivity(MealSuggestIntent);
+    }
+    public void buildGrocListDetailsRecyclerView(){
+        
     }
 }

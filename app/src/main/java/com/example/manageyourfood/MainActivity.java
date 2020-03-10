@@ -9,10 +9,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+
+
     private Button invNavButton;
     private Button grocListNavButton;
     private Button mealSuggestNavButton;
     private Button homeNavButton;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

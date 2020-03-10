@@ -83,13 +83,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/editGrocListNavButton"
+            android:id="@+id/addGrocListNavButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="44dp"
             android:layout_marginLeft="44dp"
             android:layout_marginBottom="16dp"
-            android:text="Edit"
+            android:text="Add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -97,13 +97,20 @@
             android:id="@+id/deleteGrocListButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginLeft="100dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
             android:layout_marginBottom="16dp"
             android:text="Delete"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/grocListMainRecyclerView"
+            android:layout_width="370dp"
+            android:layout_height="383dp"
+            android:layout_marginTop="2dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.169"
-            app:layout_constraintStart_toEndOf="@+id/editGrocListNavButton" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/grocListDetailsTitle" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
