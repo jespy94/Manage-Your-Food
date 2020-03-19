@@ -83,7 +83,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/addGrocListNavButton"
+            android:id="@+id/addFoodItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="44dp"
@@ -94,15 +94,15 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/deleteGrocListButton"
+            android:id="@+id/deleteFoodItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="44dp"
             android:text="Delete"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.725"
+            app:layout_constraintStart_toEndOf="@+id/addFoodItem"
+            app:layout_constraintTop_toBottomOf="@+id/grocListMainRecyclerView" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/grocListMainRecyclerView"

@@ -5,10 +5,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,14 +30,16 @@ public class GrocList extends AppCompatActivity implements grocListMainDialog.gr
     private Button addGrocListButton;
     public ArrayList<grocListItem> grocListList;
 
+    public static final String EXTRA_TEXT = "com.example.manageyourfood.EXTRA_TEXT";
+    public static final String EXTRA_GROCLIST = "com.example.manageyourfood.EXTRA_GROCLIST";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_groc_list);
 
-        grocListList = new ArrayList<>();
-        grocListList.add(new grocListItem("TestName"));
+        loadGrocListData();
         buildGrocListRecyclerView();
 
         invNavButton = findViewById(R.id.InvNav);
@@ -91,6 +98,7 @@ public class GrocList extends AppCompatActivity implements grocListMainDialog.gr
         Intent MealSuggestIntent = new Intent(this, MealSuggest.class);
         startActivity(MealSuggestIntent);
     }
+
     public void buildGrocListRecyclerView(){
         grocListRecyclerView = findViewById(R.id.grocListRecyclerView);
         grocListRecyclerView.setHasFixedSize(true);
@@ -102,8 +110,9 @@ public class GrocList extends AppCompatActivity implements grocListMainDialog.gr
         grocListAdapter.setOnInvItemClickListener(new grocListAdapter.onInvItemClickListener() {
             @Override
             public void onInvItemClick(int position) {
-                Intent intent = new Intent(this, GrocListDetails);
-                startActivity(intent);
+                Intent gcLIntent = new Intent(GrocList.this, GrocListDetails.class);
+                gcLIntent.putExtra(EXTRA_GROCLIST, grocListList.get(position));
+                startActivity(gcLIntent);
             }
         });
     }
@@ -115,5 +124,25 @@ public class GrocList extends AppCompatActivity implements grocListMainDialog.gr
     public void applyGrocListsInfo(String name) {
         grocListList.add(new grocListItem(name));
         grocListAdapter.notifyDataSetChanged();
+        saveGrocListData();
+    }
+    private void saveGrocListData(){
+        SharedPreferences sharedPreferences = getSharedPreferences("sharedpreferences inventory", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(grocListList);
+        editor.putString("Main Grocery List", json);
+        editor.apply();
+    }
+    private void loadGrocListData(){
+        SharedPreferences sharedPreferences = getSharedPreferences("sharedpreferences inventory", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("Main Grocery List", null);
+        Type type = new TypeToken<ArrayList<grocListItem>>(){}.getType();
+        grocListList = gson.fromJson(json, type);
+
+        if (grocListList == null){
+            grocListList = new ArrayList<>();
+        }
     }
 }

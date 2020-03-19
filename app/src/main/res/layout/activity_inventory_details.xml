@@ -20,7 +20,6 @@
             android:layout_width="92dp"
             android:layout_height="91dp"
             android:background="@android:color/holo_blue_light"
-            android:onClick="navInv"
             android:text="@string/inventoryNavTitle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +32,6 @@
             android:layout_marginEnd="24dp"
             android:layout_marginRight="24dp"
             android:background="@android:color/holo_orange_light"
-            android:onClick="navGrocList"
             android:text="@string/groceryListNavTitle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +42,6 @@
             android:layout_width="97dp"
             android:layout_height="95dp"
             android:background="@android:color/holo_red_light"
-            android:onClick="navHome"
             android:text="@string/homeNav"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/GroceryListNav"
@@ -56,7 +53,6 @@
             android:layout_width="101dp"
             android:layout_height="92dp"
             android:background="@android:color/darker_gray"
-            android:onClick="navMealSuggest"
             android:text="@string/mealSuggestNavTitle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/InvNav"
@@ -83,34 +79,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ScrollView
-            android:layout_width="339dp"
-            android:layout_height="426dp"
-            android:background="@android:color/background_light"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/inventoryDetailsRecyclerView"
+            android:layout_width="362dp"
+            android:layout_height="418dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/invDetailsTitle">
+            app:layout_constraintTop_toBottomOf="@+id/invDetailsTitle" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
+        <Button
+            android:id="@+id/addFoodToInvButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="16dp"
+            android:text="Add"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inventoryDetailsRecyclerView" />
 
-                <TextView
-                    android:id="@+id/foodItem1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Sample Food 1"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/foodItem2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Sample Food 2"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
-        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

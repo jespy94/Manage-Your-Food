@@ -5,21 +5,27 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class Inventory extends AppCompatActivity implements inventoryListMainDialog.inventoryListMainListener{
 
     public static final String EXTRA_TEXT = "com.example.manageyourfood.EXTRA_TEXT";
     public static final String EXTRA_PIC = "com.example.manageyourfood.EXTRA_PIC";
+    public static final String EXTRA_INV = "com.example.manageyourfood.EXTRA_INV";
     static final int REQUEST_CODE = 1;
 
     public RecyclerView invRecyclerView;
-    public RecyclerView.Adapter invAdapter;
+    public inventoryAdapter invAdapter;
     public RecyclerView.LayoutManager invLayoutManager;
 
     private Button invNavButton;
@@ -35,9 +41,8 @@ public class Inventory extends AppCompatActivity implements inventoryListMainDia
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
 
-        invArray = new ArrayList<>();
-        invArray.add(new inventoryItem("Test Inv", R.drawable.cupboard));
-        invArray.add(new inventoryItem("TestYoasdfa", R.drawable.fridge));
+        loadInvListData();
+
         buildInvRecyclerView();
 
         invNavButton = findViewById(R.id.InvNav);
@@ -111,6 +116,15 @@ public class Inventory extends AppCompatActivity implements inventoryListMainDia
         invAdapter = new inventoryAdapter(invArray);
         invRecyclerView.setLayoutManager(invLayoutManager);
         invRecyclerView.setAdapter(invAdapter);
+
+        invAdapter.setOnInvItemClickListener(new inventoryAdapter.OnInvItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Intent navIntent = new Intent(Inventory.this, inventory_details.class);
+                navIntent.putExtra(EXTRA_INV, invArray.get(position));
+                startActivity(navIntent);
+            }
+        });
     }
     public void openNewInvDialog(){
         inventoryListMainDialog invListDialog = new inventoryListMainDialog();
@@ -122,6 +136,26 @@ public class Inventory extends AppCompatActivity implements inventoryListMainDia
         inventoryItem item = new inventoryItem(name, R.drawable.cupboard);
         invArray.add(item);
         invAdapter.notifyDataSetChanged();
+        saveInvListData();
+    }
+    private void saveInvListData(){
+        SharedPreferences sharedPreferences = getSharedPreferences("sharedpreferences inventory", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(invArray);
+        editor.putString("Main Inventory List", json);
+        editor.apply();
+    }
+    private void loadInvListData(){
+        SharedPreferences sharedPreferences = getSharedPreferences("sharedpreferences inventory", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("Main Inventory List", null);
+        Type type = new TypeToken<ArrayList<inventoryItem>>(){}.getType();
+        invArray = gson.fromJson(json, type);
+
+        if (invArray == null){
+            invArray = new ArrayList<>();
+        }
     }
     //@Override
     //protected void onActivityResult(int requestCode, int resultCode, Intent data){
