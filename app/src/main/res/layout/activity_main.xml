@@ -20,7 +20,6 @@
             android:layout_width="92dp"
             android:layout_height="91dp"
             android:background="@android:color/holo_blue_light"
-            android:onClick="navInv"
             android:text="@string/inventoryNavTitle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +32,6 @@
             android:layout_marginEnd="24dp"
             android:layout_marginRight="24dp"
             android:background="@android:color/holo_orange_light"
-            android:onClick="navGrocList"
             android:text="@string/groceryListNavTitle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +42,6 @@
             android:layout_width="97dp"
             android:layout_height="95dp"
             android:background="@android:color/holo_red_light"
-            android:onClick="navHome"
             android:text="@string/homeNav"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/GroceryListNav"
@@ -56,7 +53,6 @@
             android:layout_width="101dp"
             android:layout_height="92dp"
             android:background="@android:color/darker_gray"
-            android:onClick="navMealSuggest"
             android:text="@string/mealSuggestNavTitle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/InvNav"
@@ -92,7 +88,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/homeTitle"
-            app:srcCompat="@android:drawable/alert_dark_frame" />
+            app:srcCompat="@drawable/myflogo" />
 
         <Button
             android:id="@+id/settingNavButton"
@@ -102,6 +98,16 @@
             android:text="Notification Settings"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appLogoPic" />
+
+        <Button
+            android:id="@+id/testNotificationButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Test"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appLogoPic" />
     </androidx.constraintlayout.widget.ConstraintLayout>

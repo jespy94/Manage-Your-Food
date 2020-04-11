@@ -34,17 +34,27 @@ public class grocListItem implements Parcelable {
     public String getGrocListName(){
         return grocListName;
     }
+
     public void setGrocListName(String name){
         grocListName = name;
     }
+
     public ArrayList<foodItem> getFoodList(){
         return foodList;
     }
+
+    public void setFoodList(ArrayList<foodItem> list) {foodList = list;}
+
     public foodItem getFoodFromList(int pos){
         return foodList.get(pos);
     }
+
     public void addFoodToList(foodItem item){
         foodList.add(item);
+    }
+
+    public void removeItem(int pos){
+        foodList.remove(pos);
     }
 
     @Override

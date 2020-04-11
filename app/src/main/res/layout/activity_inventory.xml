@@ -20,7 +20,6 @@
             android:layout_width="92dp"
             android:layout_height="91dp"
             android:background="@android:color/holo_blue_light"
-            android:onClick="navInv"
             android:text="@string/inventoryNavTitle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +32,6 @@
             android:layout_marginEnd="24dp"
             android:layout_marginRight="24dp"
             android:background="@android:color/holo_orange_light"
-            android:onClick="navGrocList"
             android:text="@string/groceryListNavTitle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +42,6 @@
             android:layout_width="97dp"
             android:layout_height="95dp"
             android:background="@android:color/holo_red_light"
-            android:onClick="navHome"
             android:text="@string/homeNav"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/GroceryListNav"
@@ -56,7 +53,6 @@
             android:layout_width="101dp"
             android:layout_height="92dp"
             android:background="@android:color/darker_gray"
-            android:onClick="navMealSuggest"
             android:text="@string/mealSuggestNavTitle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/InvNav"
@@ -69,15 +65,15 @@
         android:layout_height="576dp"
         android:background="@android:color/holo_blue_light"
         android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="120dp">
+        app:layout_constraintStart_toStartOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/invRecyclerView"
-            android:layout_width="373dp"
-            android:layout_height="289dp"
+            android:layout_width="366dp"
+            android:layout_height="355dp"
             android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -87,23 +83,13 @@
             android:id="@+id/addInvButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="44dp"
+            android:layout_marginTop="60dp"
             android:text="Add New Inventory"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/invRecyclerView" />
-
-        <Button
-            android:id="@+id/deleteInvButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="45dp"
-            android:text="Delete Inventory"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.644"
-            app:layout_constraintStart_toEndOf="@+id/addInvButton"
-            app:layout_constraintTop_toBottomOf="@+id/invRecyclerView" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/invRecyclerView"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/inventoryTitle"

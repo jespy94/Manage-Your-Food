@@ -1,9 +1,11 @@
 package com.example.manageyourfood;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -32,6 +34,8 @@ public class GrocList extends AppCompatActivity implements grocListMainDialog.gr
 
     public static final String EXTRA_TEXT = "com.example.manageyourfood.EXTRA_TEXT";
     public static final String EXTRA_GROCLIST = "com.example.manageyourfood.EXTRA_GROCLIST";
+    public static final String EXTRA_INT = "com.example.manageyourfood.EXTRA_INT";
+
 
 
     @Override
@@ -107,12 +111,34 @@ public class GrocList extends AppCompatActivity implements grocListMainDialog.gr
         grocListRecyclerView.setLayoutManager(grocListLayoutManager);
         grocListRecyclerView.setAdapter(grocListAdapter);
 
-        grocListAdapter.setOnInvItemClickListener(new grocListAdapter.onInvItemClickListener() {
+        grocListAdapter.setOnGrocItemClickListener(new grocListAdapter.onGrocItemClickListener() {
             @Override
-            public void onInvItemClick(int position) {
+            public void onGrocItemClick(int position) {
                 Intent gcLIntent = new Intent(GrocList.this, GrocListDetails.class);
                 gcLIntent.putExtra(EXTRA_GROCLIST, grocListList.get(position));
+                gcLIntent.putExtra(EXTRA_INT, position);
                 startActivity(gcLIntent);
+            }
+
+            @Override
+            public void onDeleteClick(final int position) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(GrocList.this);
+                builder.setMessage("Do you want to delete this item?").setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        grocListList.remove(position);
+                        grocListAdapter.notifyDataSetChanged();
+                        saveGrocListData();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+
             }
         });
     }
@@ -120,6 +146,7 @@ public class GrocList extends AppCompatActivity implements grocListMainDialog.gr
         grocListMainDialog gLDialog = new grocListMainDialog();
         gLDialog.show(getSupportFragmentManager(), "Grocery List Dialog");
     }
+
     @Override
     public void applyGrocListsInfo(String name) {
         grocListList.add(new grocListItem(name));

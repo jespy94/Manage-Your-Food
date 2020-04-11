@@ -1,21 +1,29 @@
 package com.example.manageyourfood;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatDialogFragment;
+import androidx.fragment.app.DialogFragment;
+
+import java.util.Calendar;
 
 public class inventoryDetailsDialog extends AppCompatDialogFragment {
 
     private EditText newFoodName;
     private EditText newFoodPurchDate;
-    private EditText newFooodExpDate;
+    private EditText newFoodExpDate;
+
 
     private inventoryDetailsDialogListener listener;
 
@@ -35,15 +43,19 @@ public class inventoryDetailsDialog extends AppCompatDialogFragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String foodName = newFoodName.getText().toString();
-                String foodPDate = newFoodPurchDate.getText().toString();
-                String foodExDate = newFooodExpDate.getText().toString();
+               // if() {
+                    String foodPDate = newFoodPurchDate.getText().toString();
+              //  }
+               // if() {
+                    String foodExDate = newFoodExpDate.getText().toString();
+               // }
                 listener.applyNewFood(foodName, foodPDate, foodExDate);
             }
         });
 
         newFoodName = view.findViewById(R.id.newInvFoodItemName);
         newFoodPurchDate = view.findViewById(R.id.newInvFoodItemPurchDate);
-        newFooodExpDate = view.findViewById(R.id.newInvFoodItemExpDate);
+        newFoodExpDate = view.findViewById(R.id.newInvFoodItemExpDate);
 
         return builder.create();
     }

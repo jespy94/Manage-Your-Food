@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="25dp"
+    android:layout_height="40dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="4dp"
-    app:cardBackgroundColor="@color/cardview_dark_background"
-    android:paddingBottom="4dp">
+    app:cardCornerRadius="8dp"
+    app:cardBackgroundColor="@color/design_default_color_primary"
+    android:paddingBottom="4dp"
+    android:paddingTop="4dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,30 +15,66 @@
 
         <TextView
             android:id="@+id/grocListFoodItemName"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="194dp"
+            android:layout_height="30dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="66dp"
-            android:layout_marginLeft="66dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginTop="2dp"
+            android:gravity="center"
             android:text="Test-Test"
             android:textAlignment="center"
             android:textColor="@color/cardview_light_background"
-            android:textSize="14sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/foodItemQuantity"
+            android:layout_width="64dp"
+            android:layout_height="32dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="-1dp"
+            android:layout_marginEnd="9dp"
+            android:layout_marginRight="9dp"
+            android:layout_toStartOf="@+id/deleteIcon"
+            android:layout_toLeftOf="@+id/deleteIcon"
+            android:layout_toEndOf="@+id/foodItemQuantityTitle"
+            android:layout_toRightOf="@+id/foodItemQuantityTitle"
+            android:gravity="center"
+            android:text="Quantity"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/deleteIcon"
+            android:layout_width="44dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="1dp"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
+
+        <TextView
+            android:id="@+id/foodItemQuantityTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="87dp"
-            android:layout_marginLeft="87dp"
-            android:layout_marginTop="2dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="6dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="10dp"
             android:layout_toEndOf="@+id/grocListFoodItemName"
             android:layout_toRightOf="@+id/grocListFoodItemName"
+            android:gravity="center"
             android:text="Quantity"
-            android:textSize="12sp" />
+            android:textColor="#FFFFFF" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

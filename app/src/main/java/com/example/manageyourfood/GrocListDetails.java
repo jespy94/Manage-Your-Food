@@ -1,9 +1,11 @@
 package com.example.manageyourfood;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -21,6 +23,7 @@ public class GrocListDetails extends AppCompatActivity implements grocListDetail
 
     public static final String EXTRA_TEXT = "com.example.manageyourfood.EXTRA_TEXT";
     public static final String EXTRA_GROCLIST = "com.example.manageyourfood.EXTRA_GROCLIST";
+    public static final String EXTRA_INT = "com.example.manageyourfood.EXTRA_INT";
 
     public RecyclerView grocListDetailsRecyclerView;
     public grocListDetailsAdapter gLDAdapter;
@@ -35,6 +38,7 @@ public class GrocListDetails extends AppCompatActivity implements grocListDetail
     private TextView grocListName;
     private grocListItem currentGList;
     public ArrayList<foodItem> gDLArray;
+    private String pos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +110,7 @@ public class GrocListDetails extends AppCompatActivity implements grocListDetail
         Intent intent = getIntent();
         grocListName = findViewById(R.id.grocListDetailsTitle);
         currentGList = intent.getParcelableExtra(EXTRA_GROCLIST);
+        pos = Integer.toString(intent.getIntExtra(EXTRA_INT, 0));
         gDLArray = currentGList.getFoodList();
         grocListName.setText(currentGList.getGrocListName());
     }
@@ -119,36 +124,58 @@ public class GrocListDetails extends AppCompatActivity implements grocListDetail
         grocListDetailsRecyclerView = findViewById(R.id.grocListMainRecyclerView);
         grocListDetailsRecyclerView.setHasFixedSize(true);
         gLDLayoutManager = new LinearLayoutManager(this);
-        gLDAdapter = new grocListDetailsAdapter(gDLArray);
+        gLDAdapter = new grocListDetailsAdapter(currentGList.getFoodList());
 
         grocListDetailsRecyclerView.setLayoutManager(gLDLayoutManager);
         grocListDetailsRecyclerView.setAdapter(gLDAdapter);
+        gLDAdapter.setOnGrocListDetailsClick(new grocListDetailsAdapter.grocListDetailsListener() {
+            @Override
+            public void onDeleteClick(final int position) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(GrocListDetails.this);
+                builder.setMessage("Do you want to delete this item?").setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        currentGList.removeItem(position);
+                        //gDLArray.remove(position);
+                        gLDAdapter.notifyDataSetChanged();
+                        saveCurrentGrocListData();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+        });
     }
 
     @Override
     public void applyNewFoodDetails (String name, int num) {
-        //currentGList.addFoodToList(new foodItem(name, num));
-        gDLArray.add(new foodItem(name, num));
+        currentGList.addFoodToList(new foodItem(name, num));
+        //gDLArray.add(new foodItem(name, num));
         gLDAdapter.notifyDataSetChanged();
         saveCurrentGrocListData();
     }
     private void saveCurrentGrocListData(){
-        SharedPreferences sharedPreferences = getSharedPreferences("sharedpreferences inventory", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("sharedpreferences grocery list details" + pos, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
-        String json = gson.toJson(gDLArray);
+        String json = gson.toJson(currentGList.getFoodList());
         editor.putString("Current Grocery List", json);
         editor.apply();
     }
     private void loadCurrentGrocListData(){
-        SharedPreferences sharedPreferences = getSharedPreferences("sharedpreferences inventory", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("sharedpreferences grocery list details" + pos, MODE_PRIVATE);
         Gson gson = new Gson();
         String json = sharedPreferences.getString("Current Grocery List", null);
         Type type = new TypeToken<ArrayList<foodItem>>(){}.getType();
         gDLArray = gson.fromJson(json, type);
 
-       // if (gDLArray == null){
-         //    gDLArray = new ArrayList<>();
-       // }
+        if (gDLArray != null){
+            currentGList.setFoodList(gDLArray);
+        }
     }
 }

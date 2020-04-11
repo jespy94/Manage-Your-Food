@@ -1,9 +1,11 @@
 package com.example.manageyourfood;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -22,6 +24,7 @@ public class Inventory extends AppCompatActivity implements inventoryListMainDia
     public static final String EXTRA_TEXT = "com.example.manageyourfood.EXTRA_TEXT";
     public static final String EXTRA_PIC = "com.example.manageyourfood.EXTRA_PIC";
     public static final String EXTRA_INV = "com.example.manageyourfood.EXTRA_INV";
+    public static final String EXTRA_INT = "com.example.manageyourfood.EXTRA_INT";
     static final int REQUEST_CODE = 1;
 
     public RecyclerView invRecyclerView;
@@ -33,7 +36,6 @@ public class Inventory extends AppCompatActivity implements inventoryListMainDia
     private Button mealSuggestNavButton;
     private Button homeNavButton;
     private Button addInvButton;
-    private Button deleteInvButton;
     public ArrayList<inventoryItem> invArray;
 
     @Override
@@ -50,7 +52,6 @@ public class Inventory extends AppCompatActivity implements inventoryListMainDia
         mealSuggestNavButton = findViewById(R.id.mealSuggestNav);
         homeNavButton = findViewById(R.id.homeNav);
         addInvButton = findViewById(R.id.addInvButton);
-        deleteInvButton = findViewById(R.id.deleteInvButton);
 
 
         invNavButton.setOnClickListener(new View.OnClickListener() {
@@ -105,10 +106,6 @@ public class Inventory extends AppCompatActivity implements inventoryListMainDia
         startActivity(MealSuggestIntent);
     }
 
-    //public void navNewInv (){
-       // Intent newInvIntent = new Intent(this, InventoryAdd.class);
-       // startActivityForResult(newInvIntent, REQUEST_CODE);
-   // }
     public void buildInvRecyclerView(){
         invRecyclerView = findViewById(R.id.invRecyclerView);
         invRecyclerView.setHasFixedSize(true);
@@ -122,7 +119,28 @@ public class Inventory extends AppCompatActivity implements inventoryListMainDia
             public void onItemClick(int position) {
                 Intent navIntent = new Intent(Inventory.this, inventory_details.class);
                 navIntent.putExtra(EXTRA_INV, invArray.get(position));
+                navIntent.putExtra(EXTRA_INT, position);
                 startActivity(navIntent);
+            }
+
+            @Override
+            public void onDeleteClick(final int position) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(Inventory.this);
+                builder.setMessage("Do you want to delete this item?").setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        invArray.remove(position);
+                        invAdapter.notifyDataSetChanged();
+                        saveInvListData();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
             }
         });
     }
@@ -157,21 +175,9 @@ public class Inventory extends AppCompatActivity implements inventoryListMainDia
             invArray = new ArrayList<>();
         }
     }
-    //@Override
-    //protected void onActivityResult(int requestCode, int resultCode, Intent data){
-    //    super.onActivityResult(requestCode, resultCode, data);
-    //    if(requestCode == REQUEST_CODE){
-     //       if(resultCode == RESULT_OK){
-     //           inventoryItem item = new inventoryItem(data.getStringExtra(EXTRA_TEXT), data.getIntExtra(EXTRA_PIC, R.drawable.fridge));
-      //          invArray.add(item);
-      //          invAdapter.notifyDataSetChanged();
-      //          Toast.makeText(getApplicationContext(), "item added", Toast.LENGTH_LONG).show();
-       //     }
-      //  }
-      //  else {
-       //     Toast.makeText(getApplicationContext(),"did not work", Toast.LENGTH_LONG).show();
-       // }
-
+    //public void openDeleteDialog(){
+      //  deleteDialog dialog = new deleteDialog();
+     //   dialog.show(getSupportFragmentManager(), "delete dialog");
     //}
 
 }

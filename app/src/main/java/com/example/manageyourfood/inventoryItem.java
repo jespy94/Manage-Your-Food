@@ -3,6 +3,7 @@ package com.example.manageyourfood;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class inventoryItem implements Parcelable {
@@ -56,6 +57,12 @@ public class inventoryItem implements Parcelable {
 
     public void addFoodtoInvList(foodItem item){
         invFoodList.add(item);
+    }
+
+    public void setInvFoodList(ArrayList<foodItem> list) {invFoodList = list;}
+
+    public void removeFoodItem(int position){
+        invFoodList.remove(position);
     }
 
     @Override

@@ -18,6 +18,7 @@ public class inventoryAdapter extends RecyclerView.Adapter<inventoryAdapter.invV
 
     public interface OnInvItemClickListener{
         void onItemClick(int position);
+        void onDeleteClick(int position);
     }
     public void setOnInvItemClickListener (OnInvItemClickListener listener){
         invListener = listener;
@@ -27,11 +28,13 @@ public class inventoryAdapter extends RecyclerView.Adapter<inventoryAdapter.invV
 
         public ImageView invImageView;
         public TextView invTextView;
+        public ImageView deleteIcon;
 
         public invViewHolder(View itemView, final OnInvItemClickListener listener){
             super(itemView);
             invImageView = itemView.findViewById(R.id.invItemPic);
             invTextView = itemView.findViewById(R.id.invItemName);
+            deleteIcon = itemView.findViewById(R.id.deleteIcon);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -40,6 +43,17 @@ public class inventoryAdapter extends RecyclerView.Adapter<inventoryAdapter.invV
                         int position = getAdapterPosition();
                         if(position != RecyclerView.NO_POSITION){
                             listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
+            deleteIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener != null){
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION){
+                            listener.onDeleteClick(position);
                         }
                     }
                 }

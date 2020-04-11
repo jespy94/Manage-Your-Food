@@ -4,6 +4,7 @@ import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,29 +14,44 @@ import java.util.ArrayList;
 
 public class grocListAdapter extends RecyclerView.Adapter<grocListAdapter.grocListViewHolder> {
     private ArrayList<grocListItem> gList;
-    private onInvItemClickListener invListener;
+    private onGrocItemClickListener invListener;
 
-    public interface onInvItemClickListener{
-        void onInvItemClick(int position);
+
+    public interface onGrocItemClickListener{
+        void onGrocItemClick(int position);
+        void onDeleteClick(int position);
     }
 
-    public void setOnInvItemClickListener(onInvItemClickListener listener){
+    public void setOnGrocItemClickListener(onGrocItemClickListener listener){
         invListener = listener;
     }
 
 
     public static class grocListViewHolder extends RecyclerView.ViewHolder{
         public TextView gListName;
-        public grocListViewHolder(View itemView, final onInvItemClickListener listener){
+        public ImageView deleteIcon;
+        public grocListViewHolder(View itemView, final onGrocItemClickListener listener){
             super(itemView);
             gListName = itemView.findViewById(R.id.grocListName);
+            deleteIcon = itemView.findViewById(R.id.deleteIcon);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if(listener != null){
                         int position = getAdapterPosition();
                         if(position != RecyclerView.NO_POSITION){
-                            listener.onInvItemClick(position);
+                            listener.onGrocItemClick(position);
+                        }
+                    }
+                }
+            });
+            deleteIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener != null){
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION){
+                            listener.onDeleteClick(position);
                         }
                     }
                 }

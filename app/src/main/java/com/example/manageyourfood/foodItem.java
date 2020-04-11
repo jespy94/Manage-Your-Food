@@ -10,17 +10,20 @@ public class foodItem extends Object implements Parcelable {
     private String purchDate;
     private String expDate;
     private int quantity;
+    private Boolean checked;
     //For Inventory Function
     public foodItem (String name, String pDate, String eDate){
         foodName = name;
         purchDate = pDate;
         expDate = eDate;
         quantity = 0;
+        checked = false;
     }
     //For Grocery List Function
     public foodItem (String name, int num){
         foodName = name;
         quantity = num;
+        checked = false;
     }
 
     protected foodItem(Parcel in) {
@@ -67,6 +70,10 @@ public class foodItem extends Object implements Parcelable {
     public int getQuantity(){return quantity;}
 
     public void setQuantity(int num){quantity = num;}
+
+    public Boolean getChecked(){return checked;}
+
+    public void setChecked(Boolean value){checked = value;}
 
     @Override
     public int describeContents() {
