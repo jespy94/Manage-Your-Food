@@ -1,5 +1,5 @@
 # Android App “Manage Your Food”: Detailed Guide
-##About Manage Your Food:
+## About Manage Your Food:
 “Manage Your Food” is an Android application with the implied goal of reducing food waste by managing a user’s food.
 “Manage Your Food” has three main functions: the inventory function, the grocery list function, and the meal suggestion function. 
 The inventory function allows users to create inventories, such as fridges or pantries, and add their respective food items.
@@ -58,14 +58,20 @@ To setup,
 	When the desired items are added to the query space, press Search to do a web search for recipes including the items. 
 ## Additional Info
 ## FAQs
-Q: When I delete either a grocery list or an inventory and then create a new grocery list or inventory with the same name, it retains all of the existing items. How do I get this to not happen?
-A: Due to how the app is programmed, this is an unintended occurrence. The only way to fix this problem right now is to delete all the items in the grocery list or inventory before deleting the actual grocery list or inventory.
+### Q:
+When I delete either a grocery list or an inventory and then create a new grocery list or inventory with the same name, it retains all of the existing items. How do I get this to not happen?
+### A: 
+Due to how the app is programmed, this is an unintended occurrence. The only way to fix this problem right now is to delete all the items in the grocery list or inventory before deleting the actual grocery list or inventory.
 
-Q: When I use the app on my Android device, there is a white space at the top of each screen. How do I get rid of this?
-A: While the width of each screen is based on percentages, the height of the contents of each screen are hardcoded for Pixel 3 phones due to how the app was tested on a Pixel 3 emulator. The white space cannot be removed at this time, but it should not affect how the app performs.
+### Q: 
+When I use the app on my Android device, there is a white space at the top of each screen. How do I get rid of this?
+### A: 
+While the width of each screen is based on percentages, the height of the contents of each screen are hardcoded for Pixel 3 phones due to how the app was tested on a Pixel 3 emulator. The white space cannot be removed at this time, but it should not affect how the app performs.
 
-Q: In the meal suggestion section, when I try to add items from my inventories, they are sometimes not added even though they are checked. Why is this happening?
-A: It is not known why this happens yet, but if you try to add different items or fewer items and then return to add the desired items, it should work.
+### Q:
+In the meal suggestion section, when I try to add items from my inventories, they are sometimes not added even though they are checked. Why is this happening?
+### A: 
+It is not known why this happens yet, but if you try to add different items or fewer items and then return to add the desired items, it should work.
 ## Contact
 Phone Number: 770-876-7058
 Primary E-mail: espyboys@gmail.com
