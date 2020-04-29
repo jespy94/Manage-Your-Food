@@ -51,12 +51,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="576dp"
-        android:layout_marginBottom="1dp"
+        android:layout_height="0dp"
         android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/mealSuggestTitle"
@@ -88,7 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="120dp"
-            android:text="OR"
+            android:text="@string/or"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/manualButton"
             app:layout_constraintStart_toEndOf="@+id/FromExistingButton"
@@ -110,7 +111,7 @@
             android:layout_marginTop="112dp"
             android:layout_marginEnd="28dp"
             android:layout_marginRight="28dp"
-            android:text="Manual Add"
+            android:text="@string/manual_add"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mealSuggestTitle" />
 
@@ -121,7 +122,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="112dp"
-            android:text="From Inventory"
+            android:text="@string/from_inventory"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mealSuggestTitle" />
     </androidx.constraintlayout.widget.ConstraintLayout>

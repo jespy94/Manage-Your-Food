@@ -28,7 +28,7 @@
             android:layout_toStartOf="@+id/foodItemQuantityTitle"
             android:layout_toLeftOf="@+id/foodItemQuantityTitle"
             android:gravity="center"
-            android:text="Test-Test"
+            android:text="@string/test_test"
             android:textAlignment="center"
             android:textColor="@color/cardview_light_background"
             android:textSize="16sp" />
@@ -44,7 +44,7 @@
             android:layout_toStartOf="@+id/deleteIcon"
             android:layout_toLeftOf="@+id/deleteIcon"
             android:gravity="center"
-            android:text="Quantity"
+            android:text="@string/quantity"
             android:textColor="#FFFFFF"
             android:textSize="14sp" />
 
@@ -58,6 +58,7 @@
             android:layout_marginEnd="12dp"
             android:layout_marginRight="12dp"
             android:layout_marginBottom="1dp"
+            android:contentDescription="@string/deletes"
             app:srcCompat="@android:drawable/ic_menu_delete" />
 
         <TextView
@@ -73,7 +74,7 @@
             android:layout_toStartOf="@+id/foodItemQuantity"
             android:layout_toLeftOf="@+id/foodItemQuantity"
             android:gravity="center"
-            android:text="Quantity:"
+            android:text="@string/quantity_grocFI"
             android:textColor="#FFFFFF" />
 
     </RelativeLayout>

@@ -12,11 +12,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:ems="10"
-        android:hint="Enter Item's Name"
+        android:hint="@string/enter_item_s_name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/newFoodItemQuant"
@@ -24,11 +25,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:ems="10"
-        android:hint="Quantity"
+        android:hint="@string/quantity"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newFoodItemName"
-        app:layout_constraintVertical_bias="0.004" />
+        app:layout_constraintVertical_bias="0.004"
+        android:importantForAutofill="no" />
 </androidx.constraintlayout.widget.ConstraintLayout>

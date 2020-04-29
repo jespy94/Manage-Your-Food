@@ -27,7 +27,7 @@
             android:layout_toStartOf="@+id/deleteIcon"
             android:layout_toLeftOf="@+id/deleteIcon"
             android:gravity="center"
-            android:text="Test-Test"
+            android:text="@string/test_test"
             android:textAlignment="center"
             android:textColor="@color/cardview_light_background"
             android:textSize="24sp" />
@@ -44,6 +44,7 @@
             android:layout_marginEnd="14dp"
             android:layout_marginRight="14dp"
             android:layout_marginBottom="-1dp"
+            android:contentDescription="@string/deletes"
             app:srcCompat="@android:drawable/ic_menu_delete" />
 
     </RelativeLayout>

@@ -12,11 +12,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
         android:ems="10"
-        android:hint="Enter Item Name"
+        android:hint="@string/enter_item_name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/newInvFoodItemPurchDate"
@@ -24,8 +25,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:ems="10"
-        android:hint="Purchase: MM/DD/YYYY"
-        android:inputType="date"
+        android:hint="@string/purchase_mm_dd_yyyy"
+        android:importantForAutofill="no"
+        android:inputType="datetime"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,8 +39,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:ems="10"
-        android:hint="Expiry: MM/DD/YYYY"
-        android:inputType="date"
+        android:hint="@string/expiry_mm_dd_yyyy"
+        android:importantForAutofill="no"
+        android:inputType="datetime"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

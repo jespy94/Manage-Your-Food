@@ -13,35 +13,23 @@
 
         <TextView
             android:id="@+id/invItemName"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="60dp"
-            android:layout_marginRight="60dp"
-            android:layout_toStartOf="@+id/deleteIcon"
-            android:layout_toLeftOf="@+id/deleteIcon"
-            android:text="Test-Test"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:textColor="@color/cardview_light_background"
-            android:textSize="24sp" />
-
-        <ImageView
-            android:id="@+id/invItemPic"
-            android:layout_width="51dp"
-            android:layout_height="53dp"
+            android:layout_width="253dp"
+            android:layout_height="51dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="63dp"
-            android:layout_marginLeft="63dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="44dp"
-            android:layout_marginRight="44dp"
-            android:layout_toStartOf="@+id/invItemName"
-            android:layout_toLeftOf="@+id/invItemName"
-            app:srcCompat="@android:color/holo_red_dark" />
+            android:layout_marginStart="18dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="49dp"
+            android:layout_marginRight="49dp"
+            android:layout_toStartOf="@+id/deleteIcon"
+            android:layout_toLeftOf="@+id/deleteIcon"
+            android:gravity="center"
+            android:text="@string/test_test"
+            android:textAlignment="center"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="24sp" />
 
         <ImageView
             android:id="@+id/deleteIcon"
@@ -53,6 +41,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="17dp"
             android:layout_marginRight="17dp"
+            android:contentDescription="@string/deletes"
             app:srcCompat="@android:drawable/ic_menu_delete" />
 
     </RelativeLayout>
