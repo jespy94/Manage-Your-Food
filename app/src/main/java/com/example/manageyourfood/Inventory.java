@@ -21,11 +21,8 @@ import java.util.ArrayList;
 
 public class Inventory extends AppCompatActivity implements inventoryListMainDialog.inventoryListMainListener{
 
-    public static final String EXTRA_TEXT = "com.example.manageyourfood.EXTRA_TEXT";
-    public static final String EXTRA_PIC = "com.example.manageyourfood.EXTRA_PIC";
     public static final String EXTRA_INV = "com.example.manageyourfood.EXTRA_INV";
     public static final String EXTRA_INT = "com.example.manageyourfood.EXTRA_INT";
-    static final int REQUEST_CODE = 1;
 
     public RecyclerView invRecyclerView;
     public inventoryAdapter invAdapter;
@@ -106,6 +103,7 @@ public class Inventory extends AppCompatActivity implements inventoryListMainDia
         startActivity(MealSuggestIntent);
     }
 
+    //Creates recyclerview with listeners
     public void buildInvRecyclerView(){
         invRecyclerView = findViewById(R.id.invRecyclerView);
         invRecyclerView.setHasFixedSize(true);
@@ -149,13 +147,16 @@ public class Inventory extends AppCompatActivity implements inventoryListMainDia
         invListDialog.show(getSupportFragmentManager(), "New Inventory Dialog");
     }
 
+    //Adds new inventory
     @Override
     public void applyInventoryDetails(String name, int pic) {
-        inventoryItem item = new inventoryItem(name, R.drawable.cupboard);
+        inventoryItem item = new inventoryItem(name);
         invArray.add(item);
         invAdapter.notifyDataSetChanged();
         saveInvListData();
     }
+
+    //Saves the list of inventories to sharedpreferences
     private void saveInvListData(){
         SharedPreferences sharedPreferences = getSharedPreferences("sharedpreferences inventory", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -164,6 +165,8 @@ public class Inventory extends AppCompatActivity implements inventoryListMainDia
         editor.putString("Main Inventory List", json);
         editor.apply();
     }
+
+    //Loads list of inventories
     private void loadInvListData(){
         SharedPreferences sharedPreferences = getSharedPreferences("sharedpreferences inventory", MODE_PRIVATE);
         Gson gson = new Gson();
@@ -175,9 +178,4 @@ public class Inventory extends AppCompatActivity implements inventoryListMainDia
             invArray = new ArrayList<>();
         }
     }
-    //public void openDeleteDialog(){
-      //  deleteDialog dialog = new deleteDialog();
-     //   dialog.show(getSupportFragmentManager(), "delete dialog");
-    //}
-
 }

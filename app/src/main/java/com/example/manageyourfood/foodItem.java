@@ -3,14 +3,13 @@ package com.example.manageyourfood;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.Date;
-
 public class foodItem extends Object implements Parcelable {
     private String foodName;
     private String purchDate;
     private String expDate;
     private int quantity;
     private Boolean checked;
+
     //For Inventory Function
     public foodItem (String name, String pDate, String eDate){
         foodName = name;
@@ -19,29 +18,13 @@ public class foodItem extends Object implements Parcelable {
         quantity = 0;
         checked = false;
     }
+
     //For Grocery List Function
     public foodItem (String name, int num){
         foodName = name;
         quantity = num;
         checked = false;
     }
-
-    protected foodItem(Parcel in) {
-        foodName = in.readString();
-        quantity = in.readInt();
-    }
-
-    public static final Creator<foodItem> CREATOR = new Creator<foodItem>() {
-        @Override
-        public foodItem createFromParcel(Parcel in) {
-            return new foodItem(in);
-        }
-
-        @Override
-        public foodItem[] newArray(int size) {
-            return new foodItem[size];
-        }
-    };
 
     public void setFoodName (String newName){
         foodName = newName;
@@ -71,9 +54,13 @@ public class foodItem extends Object implements Parcelable {
 
     public void setQuantity(int num){quantity = num;}
 
+    //These are for meal suggestion checklist
+
     public Boolean getChecked(){return checked;}
 
     public void setChecked(Boolean value){checked = value;}
+
+    //Parcelable methods
 
     @Override
     public int describeContents() {
@@ -85,4 +72,21 @@ public class foodItem extends Object implements Parcelable {
         dest.writeString(foodName);
         dest.writeInt(quantity);
     }
+
+    protected foodItem(Parcel in) {
+        foodName = in.readString();
+        quantity = in.readInt();
+    }
+
+    public static final Creator<foodItem> CREATOR = new Creator<foodItem>() {
+        @Override
+        public foodItem createFromParcel(Parcel in) {
+            return new foodItem(in);
+        }
+
+        @Override
+        public foodItem[] newArray(int size) {
+            return new foodItem[size];
+        }
+    };
 }

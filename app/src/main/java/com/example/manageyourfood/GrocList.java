@@ -103,6 +103,7 @@ public class GrocList extends AppCompatActivity implements grocListMainDialog.gr
         startActivity(MealSuggestIntent);
     }
 
+    //Builds recyclerview and listeners
     public void buildGrocListRecyclerView(){
         grocListRecyclerView = findViewById(R.id.grocListRecyclerView);
         grocListRecyclerView.setHasFixedSize(true);
@@ -112,6 +113,7 @@ public class GrocList extends AppCompatActivity implements grocListMainDialog.gr
         grocListRecyclerView.setAdapter(grocListAdapter);
 
         grocListAdapter.setOnGrocItemClickListener(new grocListAdapter.onGrocItemClickListener() {
+            //Goes to grocery list's details and sends position
             @Override
             public void onGrocItemClick(int position) {
                 Intent gcLIntent = new Intent(GrocList.this, GrocListDetails.class);
@@ -120,6 +122,7 @@ public class GrocList extends AppCompatActivity implements grocListMainDialog.gr
                 startActivity(gcLIntent);
             }
 
+            //Brings up dialog for deletion
             @Override
             public void onDeleteClick(final int position) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(GrocList.this);
@@ -142,17 +145,22 @@ public class GrocList extends AppCompatActivity implements grocListMainDialog.gr
             }
         });
     }
+
+    //Dialog for add new grocery lists
     public void addGrocListDialog(){
         grocListMainDialog gLDialog = new grocListMainDialog();
         gLDialog.show(getSupportFragmentManager(), "Grocery List Dialog");
     }
 
+    //Adds grocery list based on dialog
     @Override
     public void applyGrocListsInfo(String name) {
         grocListList.add(new grocListItem(name));
         grocListAdapter.notifyDataSetChanged();
         saveGrocListData();
     }
+
+    //Saves list of all grocery lists
     private void saveGrocListData(){
         SharedPreferences sharedPreferences = getSharedPreferences("sharedpreferences inventory", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -161,6 +169,8 @@ public class GrocList extends AppCompatActivity implements grocListMainDialog.gr
         editor.putString("Main Grocery List", json);
         editor.apply();
     }
+
+    //Loads the list of all grocery lists
     private void loadGrocListData(){
         SharedPreferences sharedPreferences = getSharedPreferences("sharedpreferences inventory", MODE_PRIVATE);
         Gson gson = new Gson();

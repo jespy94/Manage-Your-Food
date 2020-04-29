@@ -114,15 +114,16 @@ public class inventory_details extends AppCompatActivity implements inventoryDet
         addDialog.show(getSupportFragmentManager(), "Add Food Dialog");
     }
 
+    //Gets the details of inventory and its position in main inventory page
     public void getInventory(){
         Intent receivingIntent = getIntent();
         currentInventory = receivingIntent.getParcelableExtra(EXTRA_INV);
         pos = Integer.toString(receivingIntent.getIntExtra(EXTRA_INT, 0));
-       // currentInventoryArray = currentInventory.getInvFoodList();
         invDetailsTitle = findViewById(R.id.invDetailsTitle);
         invDetailsTitle.setText(currentInventory.getInvName());
     }
 
+    //Builds recyclerview and listeners based on retrieved inventory
     public void buildInvDetailsRecyclerView(){
         invDetailsRecyclerView = findViewById(R.id.inventoryDetailsRecyclerView);
         invDetailsRecyclerView.setHasFixedSize(true);
@@ -149,7 +150,6 @@ public class inventory_details extends AppCompatActivity implements inventoryDet
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         currentInventory.removeFoodItem(position);
-                        //currentInventoryArray.remove(position);
                         invDetailsAdapter.notifyDataSetChanged();
                         saveCurrentInventoryData();
                     }
@@ -160,13 +160,15 @@ public class inventory_details extends AppCompatActivity implements inventoryDet
         });
     }
 
+    //Adds food to detail's recyclerview
     @Override
     public void applyNewFood(String name, String PDate, String ExDate) {
          currentInventory.addFoodtoInvList(new foodItem(name, PDate, ExDate));
-         //currentInventoryArray.add(new foodItem(name, PDate, ExDate));
          invDetailsAdapter.notifyDataSetChanged();
          saveCurrentInventoryData();
     }
+
+    //Saves inventory details according to retrieved position from main inventory page
     private void saveCurrentInventoryData(){
         SharedPreferences sharedPreferences = getSharedPreferences("sharedpreferences inventory details" + pos, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -175,6 +177,8 @@ public class inventory_details extends AppCompatActivity implements inventoryDet
         editor.putString("Current Inventory List", json);
         editor.apply();
     }
+
+    //Loads inventory details according to retrieved position from main inventory page
     private void loadCurrentInventoryData(){
         SharedPreferences sharedPreferences = getSharedPreferences("sharedpreferences inventory details" + pos, MODE_PRIVATE);
         Gson gson = new Gson();
@@ -184,8 +188,5 @@ public class inventory_details extends AppCompatActivity implements inventoryDet
         if (currentInventoryArray != null) {
             currentInventory.setInvFoodList(currentInventoryArray);
         }
-      //if (currentInventoryArray == null){
-      //    currentInventoryArray = new ArrayList<>();
-      //}d
     }
 }

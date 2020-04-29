@@ -26,13 +26,11 @@ public class inventoryAdapter extends RecyclerView.Adapter<inventoryAdapter.invV
 
     public static class invViewHolder extends RecyclerView.ViewHolder{
 
-        public ImageView invImageView;
         public TextView invTextView;
         public ImageView deleteIcon;
 
         public invViewHolder(View itemView, final OnInvItemClickListener listener){
             super(itemView);
-            invImageView = itemView.findViewById(R.id.invItemPic);
             invTextView = itemView.findViewById(R.id.invItemName);
             deleteIcon = itemView.findViewById(R.id.deleteIcon);
 
@@ -76,7 +74,6 @@ public class inventoryAdapter extends RecyclerView.Adapter<inventoryAdapter.invV
     public void onBindViewHolder(@NonNull invViewHolder holder, int position) {
         inventoryItem currentItem = aInventoryList.get(position);
 
-        holder.invImageView.setImageResource(currentItem.getInvPic());
         holder.invTextView.setText(currentItem.getInvName());
     }
 

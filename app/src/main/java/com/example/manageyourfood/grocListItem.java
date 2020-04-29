@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
-
+//These are the grocery lists
 public class grocListItem implements Parcelable {
     private String grocListName;
     private ArrayList<foodItem> foodList;
@@ -19,17 +19,6 @@ public class grocListItem implements Parcelable {
         foodList = in.createTypedArrayList(foodItem.CREATOR);
     }
 
-    public static final Creator<grocListItem> CREATOR = new Creator<grocListItem>() {
-        @Override
-        public grocListItem createFromParcel(Parcel in) {
-            return new grocListItem(in);
-        }
-
-        @Override
-        public grocListItem[] newArray(int size) {
-            return new grocListItem[size];
-        }
-    };
 
     public String getGrocListName(){
         return grocListName;
@@ -57,6 +46,7 @@ public class grocListItem implements Parcelable {
         foodList.remove(pos);
     }
 
+    //Parcelable methods
     @Override
     public int describeContents() {
         return 0;
@@ -67,4 +57,16 @@ public class grocListItem implements Parcelable {
         dest.writeString(grocListName);
         dest.writeTypedList(foodList);
     }
+
+    public static final Creator<grocListItem> CREATOR = new Creator<grocListItem>() {
+        @Override
+        public grocListItem createFromParcel(Parcel in) {
+            return new grocListItem(in);
+        }
+
+        @Override
+        public grocListItem[] newArray(int size) {
+            return new grocListItem[size];
+        }
+    };
 }

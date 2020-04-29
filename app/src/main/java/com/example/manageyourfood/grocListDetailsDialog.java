@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
@@ -35,7 +36,7 @@ public class grocListDetailsDialog extends AppCompatDialogFragment {
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.groc_list_details_dialog, null);
-
+        //Checks if inputs are valid and sends info to details
         builder.setView(view).setTitle("Add new item.").setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -46,7 +47,15 @@ public class grocListDetailsDialog extends AppCompatDialogFragment {
             public void onClick(DialogInterface dialog, int which) {
                 String foodName = newFoodItemName.getText().toString();
                 int foodQuant = Integer.parseInt(newFoodItemQuant.getText().toString());
-                listener.applyNewFoodDetails(foodName, foodQuant);
+                if(foodName == null || foodName == ""){
+                    Toast.makeText(getContext(), "Put in valid item name", Toast.LENGTH_LONG).show();
+                }
+                else if(foodQuant == 0){
+                    Toast.makeText(getContext(), "Put in valid quantity. At least 1", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    listener.applyNewFoodDetails(foodName, foodQuant);
+                }
             }
         });
 

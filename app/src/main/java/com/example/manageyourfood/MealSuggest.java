@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.SearchManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -108,6 +109,7 @@ public class MealSuggest extends AppCompatActivity implements ManualMealSuggestD
         startActivity(MealSuggestIntent);
     }
 
+    //Builds recyclerview for the search query
     public void buildMealQueryRecyclerView(){
         MealQueryRecyclerView = findViewById(R.id.MealQueryRecyclerView);
         MealQueryRecyclerView.setHasFixedSize(true);
@@ -115,6 +117,27 @@ public class MealSuggest extends AppCompatActivity implements ManualMealSuggestD
         MealQueryLayoutManager = new LinearLayoutManager(this);
         MealQueryRecyclerView.setAdapter(MealQueryAdapter);
         MealQueryRecyclerView.setLayoutManager(MealQueryLayoutManager);
+
+        MealQueryAdapter.setOnItemClickListener(new MealQueryAdapter.OnItemClickListener() {
+            @Override
+            public void deleteItem(final int position) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MealSuggest.this);
+                builder.setMessage("Do you want to delete this item?").setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mealSuggestQueryList.remove(position);
+                        MealQueryAdapter.notifyDataSetChanged();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+        });
     }
 
     public void openManualDialog(){
@@ -126,6 +149,7 @@ public class MealSuggest extends AppCompatActivity implements ManualMealSuggestD
         FEMSDialog.show(getSupportFragmentManager(), "from existing add dialog");
     }
 
+    //Applies a new food items to the query recyclerview
     @Override
     public void applyTextToQueue(String name) {
         foodItem listItem = new foodItem(name, 0);
@@ -133,13 +157,15 @@ public class MealSuggest extends AppCompatActivity implements ManualMealSuggestD
         MealQueryAdapter.notifyDataSetChanged();
     }
 
-
+    //Does the web search for the recipes
     public void mealSearch(){
         Intent mealSearchIntent = new Intent(Intent.ACTION_WEB_SEARCH);
         getRecyclerViewQuery();
         mealSearchIntent.putExtra(SearchManager.QUERY,  query + " recipe");
         startActivity(mealSearchIntent);
     }
+
+    //Adds each item's name to search query
     public String getRecyclerViewQuery(){
         int i = 0;
         query = "";
@@ -150,6 +176,7 @@ public class MealSuggest extends AppCompatActivity implements ManualMealSuggestD
         return query;
     }
 
+    //Applies checked items to query recyclerview
     @Override
     public void applyFromExistingRW(ArrayList<foodItem> list) {
         int i = 0;
@@ -159,10 +186,4 @@ public class MealSuggest extends AppCompatActivity implements ManualMealSuggestD
         }
         MealQueryAdapter.notifyDataSetChanged();
     }
-
-    //@Override
-    //public void applyFromExistingRW() {
-      //    mealSuggestQueryList.add();
-       // MealQueryAdapter.notifyDataSetChanged();
-    //}
 }

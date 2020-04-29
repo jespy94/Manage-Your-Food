@@ -6,10 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".GrocList">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/bottomNavigationView"
-        android:layout_width="416dp"
+        android:layout_width="match_parent"
         android:layout_height="91dp"
+        android:weightSum="100"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -17,51 +18,40 @@
 
         <Button
             android:id="@+id/InvNav"
-            android:layout_width="92dp"
-            android:layout_height="91dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="25"
             android:background="@android:color/holo_blue_light"
-            android:text="@string/inventoryNavTitle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/GroceryListNav"
-            android:layout_width="104dp"
-            android:layout_height="94dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginRight="24dp"
-            android:background="@android:color/holo_orange_light"
-            android:text="@string/groceryListNavTitle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/homeNav"
-            android:layout_width="97dp"
-            android:layout_height="95dp"
-            android:background="@android:color/holo_red_light"
-            android:text="@string/homeNav"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/GroceryListNav"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
+            android:text="@string/inventoryNavTitle" />
         <Button
             android:id="@+id/mealSuggestNav"
-            android:layout_width="101dp"
-            android:layout_height="92dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="25"
             android:background="@android:color/darker_gray"
             android:text="@string/mealSuggestNavTitle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/InvNav"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            />
+        <Button
+            android:id="@+id/homeNav"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="25"
+            android:background="@android:color/holo_red_light"
+            android:text="@string/homeNav"
+            />
+        <Button
+            android:id="@+id/GroceryListNav"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="25"
+            android:background="@android:color/holo_orange_light"
+            android:text="@string/groceryListNavTitle" />
+
+    </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
-        android:layout_width="393dp"
+        android:layout_width="match_parent"
         android:layout_height="576dp"
         android:background="@android:color/holo_orange_light"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"

@@ -5,8 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="8dp"
     app:cardBackgroundColor="@color/design_default_color_primary"
-    android:paddingBottom="4dp"
-    android:paddingTop="4dp">
+    android:layout_marginBottom="4dp"
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,14 +15,18 @@
 
         <TextView
             android:id="@+id/grocListFoodItemName"
-            android:layout_width="194dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="19dp"
+            android:layout_marginRight="19dp"
+            android:layout_toStartOf="@+id/foodItemQuantityTitle"
+            android:layout_toLeftOf="@+id/foodItemQuantityTitle"
             android:gravity="center"
             android:text="Test-Test"
             android:textAlignment="center"
@@ -31,18 +35,14 @@
 
         <TextView
             android:id="@+id/foodItemQuantity"
-            android:layout_width="64dp"
+            android:layout_width="wrap_content"
             android:layout_height="32dp"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="-1dp"
-            android:layout_marginEnd="9dp"
-            android:layout_marginRight="9dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="7dp"
+            android:layout_marginRight="7dp"
             android:layout_toStartOf="@+id/deleteIcon"
             android:layout_toLeftOf="@+id/deleteIcon"
-            android:layout_toEndOf="@+id/foodItemQuantityTitle"
-            android:layout_toRightOf="@+id/foodItemQuantityTitle"
             android:gravity="center"
             android:text="Quantity"
             android:textColor="#FFFFFF"
@@ -66,14 +66,14 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="6dp"
-            android:layout_marginLeft="6dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="10dp"
-            android:layout_toEndOf="@+id/grocListFoodItemName"
-            android:layout_toRightOf="@+id/grocListFoodItemName"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginBottom="9dp"
+            android:layout_toStartOf="@+id/foodItemQuantity"
+            android:layout_toLeftOf="@+id/foodItemQuantity"
             android:gravity="center"
-            android:text="Quantity"
+            android:text="Quantity:"
             android:textColor="#FFFFFF" />
 
     </RelativeLayout>

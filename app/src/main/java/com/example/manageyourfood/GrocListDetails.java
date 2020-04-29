@@ -106,6 +106,7 @@ public class GrocListDetails extends AppCompatActivity implements grocListDetail
         startActivity(MealSuggestIntent);
     }
 
+    //Gets position from previous page to load current inventory
     public void getGrocList(){
         Intent intent = getIntent();
         grocListName = findViewById(R.id.grocListDetailsTitle);
@@ -115,11 +116,13 @@ public class GrocListDetails extends AppCompatActivity implements grocListDetail
         grocListName.setText(currentGList.getGrocListName());
     }
 
+    //Opens dialog for adding food items
     public void openAddFoodItemDialog(){
         grocListDetailsDialog newItemDialog = new grocListDetailsDialog();
         newItemDialog.show(getSupportFragmentManager(), "Add a New Item.");
     }
 
+    //Builds recyclerview and listeners
     public void buildGrocListDetailsRecyclerView(){
         grocListDetailsRecyclerView = findViewById(R.id.grocListMainRecyclerView);
         grocListDetailsRecyclerView.setHasFixedSize(true);
@@ -141,7 +144,6 @@ public class GrocListDetails extends AppCompatActivity implements grocListDetail
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         currentGList.removeItem(position);
-                        //gDLArray.remove(position);
                         gLDAdapter.notifyDataSetChanged();
                         saveCurrentGrocListData();
                     }
@@ -152,13 +154,15 @@ public class GrocListDetails extends AppCompatActivity implements grocListDetail
         });
     }
 
+    //Adds food item to grocery list details
     @Override
     public void applyNewFoodDetails (String name, int num) {
         currentGList.addFoodToList(new foodItem(name, num));
-        //gDLArray.add(new foodItem(name, num));
         gLDAdapter.notifyDataSetChanged();
         saveCurrentGrocListData();
     }
+
+    //Saves any changes to the grocery list details
     private void saveCurrentGrocListData(){
         SharedPreferences sharedPreferences = getSharedPreferences("sharedpreferences grocery list details" + pos, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -167,6 +171,8 @@ public class GrocListDetails extends AppCompatActivity implements grocListDetail
         editor.putString("Current Grocery List", json);
         editor.apply();
     }
+
+    //Loads the grocery list details based on position
     private void loadCurrentGrocListData(){
         SharedPreferences sharedPreferences = getSharedPreferences("sharedpreferences grocery list details" + pos, MODE_PRIVATE);
         Gson gson = new Gson();
