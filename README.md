@@ -13,14 +13,19 @@ For example, if a user was going to add tomatoes to their grocery list, but they
 The meal suggestion function allows users to search for recipes based on they input into the search query.
 Users can search through their existing food items to add to the query or they can manually input food items. 
 The search query is a web search that searches for recipes with the selected items.
-Setup:
-To setup, 
+## Setup:
+To download the application, download the APK file [here](app/release/app-release.apk).
+Press on the file and allow it to be installed on your device.
+You may need to allow the application where the file is at to allow the installation of unknown files.
+After installing, it should be available for use on your device.
 ## How To:
 ### Main Screen:
 	Users start at the main screen where the logo is placed. 
 	Navigation buttons are available at the bottom of the screen in the following order: Inventory, Meal Suggestion, Home, Grocery List. 
 	Pressing any of these buttons brings a user to its respective screen.
 	It is important to note that the Home button brings users back to the main screen. The navigation is consistent throughout the app.
+	If the Check Expired Items button is pressed, it will send a notification of items that have expired or are expiring within 7 days.
+	If there are no expired or expiring items, then the notification will say there is no expiring items.
 ### Inventory Section:
 	In the inventory screen, there is a large section in the middle that holds all of a user’s created inventories.
 	To add an inventory, press the Add New Inventory button and a dialogue will pop up. 
@@ -31,7 +36,7 @@ To setup,
 	A user can press on a particular inventory’s name and they will be taken to the inventory’s detail page. 
 	The detail page will have the inventory’s name, their food items, and an Add button. 
 	To add a food item to the inventory, the user can press on the Add button and a dialogue will pop up. 
-	The user can enter the food item’s name, purchase date, and expiration date. 
+	The user can enter the food item’s name, purchase date, and expiration date. The dates should be in MM/dd/YYYY format. 
 	If the user wants to finish adding the item to the inventory, they can press Add, but if they do not want to add the item, then they can press Cancel to stop the process.
 	If the user has created an item but they wish to delete it, then they can press the trash can icon next to the food item’s purchase and expiry date. 
 	A dialogue will pop up to confirm the deletion; if the user presses Delete, then the item will be deleted, but if the user presses Cancel, then the item will not be deleted.
@@ -63,17 +68,13 @@ When I delete either a grocery list or an inventory and then create a new grocer
 ### A: 
 Due to how the app is programmed, this is an unintended occurrence. The only way to fix this problem right now is to delete all the items in the grocery list or inventory before deleting the actual grocery list or inventory.
 
-### Q: 
-When I use the app on my Android device, there is a white space at the top of each screen. How do I get rid of this?
-### A: 
-While the width of each screen is based on percentages, the height of the contents of each screen are hardcoded for Pixel 3 phones due to how the app was tested on a Pixel 3 emulator. The white space cannot be removed at this time, but it should not affect how the app performs.
-
 ### Q:
-In the meal suggestion section, when I try to add items from my inventories, they are sometimes not added even though they are checked. Why is this happening?
-### A: 
-It is not known why this happens yet, but if you try to add different items or fewer items and then return to add the desired items, it should work.
+Am I able to edit the names of lists or food items?
+### A:
+In this version of the application, it is not possible to edit the names of lists or food items. The next version of the app will take this into consideration.
+
 ## Contact
-Phone Number: 770-876-7058
-Primary E-mail: espyboys@gmail.com
-School E-mail: je02696@georgiasouthern.edu 
+##### Phone Number: 770-876-7058
+##### Primary E-mail: espyboys@gmail.com
+##### School E-mail: je02696@georgiasouthern.edu 
 
